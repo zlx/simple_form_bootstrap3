@@ -65,9 +65,6 @@ module SimpleForm
         @html_classes = SimpleForm.additional_classes_for(:input) { additional_classes }
 
         @input_html_classes = @html_classes.dup
-        if SimpleForm.default_wrapper == :bootstrap3
-          input_html_classes << bootstrap3_class
-        end
         @input_html_options = html_options_for(:input, input_html_classes).tap do |o|
           o[:readonly]  = true if has_readonly?
           o[:disabled]  = true if has_disabled?
@@ -92,10 +89,6 @@ module SimpleForm
       end
 
       private
-      def bootstrap3_class
-       "form-control"
-      end
-
       def add_size!
         input_html_options[:size] ||= [limit, SimpleForm.default_input_size].compact.min
       end
