@@ -1,27 +1,12 @@
-![Simple Form Logo](https://raw.github.com/plataformatec/simple_form/master/simple_form.png)
-
-By [Plataformatec](http://plataformatec.com.br/).
-
-[![Gem Version](https://fury-badge.herokuapp.com/rb/simple_form.png)](http://badge.fury.io/rb/simple_form)
-[![Build Status](https://api.travis-ci.org/plataformatec/simple_form.png?branch=master)](http://travis-ci.org/plataformatec/simple_form)
-[![Code Climate](https://codeclimate.com/github/plataformatec/simple_form.png)](https://codeclimate.com/github/plataformatec/simple_form)
-
-Rails forms made easy.
-
-**SimpleForm** aims to be as flexible as possible while helping you with powerful components to create
-your forms. The basic goal of SimpleForm is to not touch your way of defining the layout, letting
-you find the better design for your eyes. Most of the DSL was inherited from Formtastic,
-which we are thankful for and should make you feel right at home.
-
-INFO: This README is [also available in a friendly navigable format](http://simple-form.plataformatec.com.br/)
-and refers to **SimpleForm** 3.0. For older releases, check the related branch for your version.
+Simple Form is a awesome plugin, Bootstrap 3 is the css framework I like best.
+So the project is integration bootstrap 3 with simple_form.
 
 ## Installation
 
 Add it to your Gemfile:
 
 ```ruby
-gem 'simple_form'
+gem 'simple_form', github: 'zlx/simple_form_bootstrap3'
 ```
 
 Run the following command to install it:
@@ -33,7 +18,7 @@ bundle install
 Run the generator:
 
 ```console
-rails generate simple_form:install
+rails generate simple_form:install --bootstrap3
 ```
 
 Also, if you want to use the country select, you will need the
@@ -43,64 +28,10 @@ Also, if you want to use the country select, you will need the
 gem 'country_select'
 ```
 
-### Twitter Bootstrap
+## Examples
 
-**SimpleForm** can be easily integrated to the [Twitter Bootstrap](http://twitter.github.com/bootstrap).
-To do that you have to use the `bootstrap` option in the install generator, like this:
-
-```console
-rails generate simple_form:install --bootstrap
-```
-
-You have to be sure that you added a copy of the [Twitter Bootstrap](http://twitter.github.com/bootstrap)
-assets on your application.
-
-For more information see the generator output, our
-[example application code](https://github.com/rafaelfranca/simple_form-bootstrap) and
-[the live example app](http://simple-form-bootstrap.plataformatec.com.br/).
-
-**NOTE**: **SimpleForm** integration requires Twitter Bootstrap version 2.0 or higher.
-
-### Twitter Bootstrap 3
-
-Most same as Bootstrap but below difference:
-
-1. For Document: [Bootstrap 3](http://twbs.github.io/bootstrap)
-
-2. use `bootstrap3` instead of `bootstrap` option for install generator
-
-3. use `controls_html` instead of `input_html` to control input size
-
-Example:
-
-Install Generator:
-
-```console
-rails generate simple_form:install --bootstrap3
-```
-
-Control inputs size
-
-```erb
-<%= simple_form_for @user do |f| %>
-  <%= f.input :username, controls_html: {class: 'col-lg-5'} %>  # =>  <div class='col-lg-4'><input class='string .../></div>
-<% end %>
-```
-
-[the live example app](http://railsnight.zlxstar.me/)
+[The live example app](http://railsnight.zlxstar.me/)
 [source code](https://github.com/zlx/rails-night)
-
-### Zurb Foundation 3
-
-To generate wrappers that are compatible with [Zurb Foundation 3](http://foundation.zurb.com/), pass the `foundation` option to the generator, like this:
-
-```console
-rails generate simple_form:install --foundation
-```
-
-Please note that the Foundation wrapper does not support the `:hint` option by default. In order to enable hints, please uncomment the appropriate line in `config/initializers/simple_form_foundation.rb`. You will need to provide your own CSS styles for hints.
-
-Please see the [instructions on how to install Foundation in a Rails app](http://foundation.zurb.com/old-docs/f3/rails.php).
 
 ## Usage
 
@@ -181,6 +112,17 @@ any html attribute to that wrapper as well using the `:wrapper_html` option, lik
   <%= f.input :username, wrapper_html: { class: 'username' } %>
   <%= f.input :password, wrapper_html: { id: 'password' } %>
   <%= f.input :remember_me, wrapper_html: { class: 'options' } %>
+  <%= f.button :submit %>
+<% end %>
+```
+
+In this *Integration*, I define a wrapper named *controls*, so you can use controls_html to override the default class(which is `col-lg-6`), like so:
+
+```erb
+<%= simple_form_for @user do |f| %>
+  <%= f.input :username, controls_html: { class: 'col-lg-2' } %>
+  <%= f.input :password, controls_html: { class: 'col-lg-2' } %>
+  <%= f.input :remember_me, controls_html: { class: 'col-lg-1' } %>
   <%= f.button :submit %>
 <% end %>
 ```
@@ -900,42 +842,3 @@ which is an HTML 5 feature. We believe most of the newest browsers are handling 
 and if they aren't, any plugin you use would take of using the placeholder attribute to do it.
 However, you can disable it if you want, by removing the placeholder component from the components
 list in **SimpleForm** configuration file.
-
-## Information
-
-### Google Group
-
-If you have any questions, comments, or concerns please use the Google Group instead of the GitHub
-Issues tracker:
-
-http://groups.google.com/group/plataformatec-simpleform
-
-### RDocs
-
-You can view the **SimpleForm** documentation in RDoc format here:
-
-http://rubydoc.info/github/plataformatec/simple_form/master/frames
-
-If you need to use **SimpleForm** with Rails 2.3, you can always run `gem server` from the command line
-after you install the gem to access the old documentation.
-
-### Bug reports
-
-If you discover any bugs, feel free to create an issue on GitHub. Please add as much information as
-possible to help us fixing the possible bug. We also encourage you to help even more by forking and
-sending us a pull request.
-
-https://github.com/plataformatec/simple_form/issues
-
-## Maintainers
-
-* José Valim (https://github.com/josevalim)
-* Carlos Antonio da Silva (https://github.com/carlosantoniodasilva)
-* Rafael Mendonça França (https://github.com/rafaelfranca)
-* Vasiliy Ermolovich (https://github.com/nashby)
-
-## License
-
-MIT License. Copyright 2009-2013 Plataformatec. http://plataformatec.com.br
-
-You are not granted rights or licenses to the trademarks of the Plataformatec, including without limitation the Simple Form name or logo.
