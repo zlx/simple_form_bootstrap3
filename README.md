@@ -116,7 +116,7 @@ any html attribute to that wrapper as well using the `:wrapper_html` option, lik
 <% end %>
 ```
 
-In this *Integration*, I define a wrapper named *controls*, so you can use controls_html to override the default class(which is `col-lg-6`), like so:
+In this **Integration**, I define a wrapper named **controls**, so you can use `:controls_html` to override the default class(which is `col-lg-6`), like so:
 
 ```erb
 <%= simple_form_for @user do |f| %>
