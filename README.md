@@ -1,3 +1,7 @@
+## WARNING
+
+***NOT IN MAINTENANCE, USE https://github.com/plataformatec/simple_form INSTEAD***
+
 Simple Form is a awesome plugin, Bootstrap 3 is the css framework I like best.
 So the project is integration bootstrap 3 with simple_form.
 
